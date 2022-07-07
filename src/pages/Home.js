@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { getProductsByName } from '../services/api';
+import Categorias from '../components/Categorias';
 
 class Home extends Component {
   constructor() {
@@ -62,7 +64,12 @@ class Home extends Component {
         {produtos && this.renderProds()}
         {(Array.isArray(produtos) && produtos.length === 0)
         && this.renderNenhumEncotrado()}
+        <Categorias />
+        <Link to="/carrinho" data-testid="shopping-cart-button">
+          Carrinho de Compras
+        </Link>
       </>
+
     );
   }
 }

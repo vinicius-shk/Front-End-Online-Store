@@ -20,7 +20,7 @@ class Categorias extends React.Component {
         {listaCategorias.map((item) => (
           <label data-testid="category" htmlFor="categoria" key={ item.id }>
             {item.name}
-            <input type="radio" id="categoria" name="item.name" />
+            <input type="radio" id="categoria" name={ item.name } />
           </label>
         ))}
       </nav>

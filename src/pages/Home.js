@@ -60,7 +60,8 @@ class Home extends Component {
         </button>
         {produtos === undefined && this.renderHomeMessage()}
         {produtos && this.renderProds()}
-        {(Array.isArray(produtos) && produtos.length === 0) && this.renderNenhumEncotrado()}
+        {(Array.isArray(produtos) && produtos.length === 0)
+        && this.renderNenhumEncotrado()}
       </>
     );
   }

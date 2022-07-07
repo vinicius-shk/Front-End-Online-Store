@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getProductsByName } from '../services/api';
+import { getProductsByCategory, getProductsByName } from '../services/api';
 import Categorias from '../components/Categorias';
 
 class Home extends Component {
@@ -22,6 +22,11 @@ class Home extends Component {
 
   handleBtnClick = () => {
     this.getProducts();
+  }
+
+  handleRadioClick = async ({ target }) => {
+    const { results } = await getProductsByCategory(target.id);
+    this.setState({ produtos: results });
   }
 
   renderHomeMessage = () => (
@@ -64,7 +69,7 @@ class Home extends Component {
         {produtos && this.renderProds()}
         {(Array.isArray(produtos) && produtos.length === 0)
         && this.renderNenhumEncotrado()}
-        <Categorias />
+        <Categorias onClick={ this.handleRadioClick } />
         <Link to="/carrinho" data-testid="shopping-cart-button">
           Carrinho de Compras
         </Link>

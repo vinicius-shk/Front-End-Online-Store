@@ -9,3 +9,7 @@ export async function getProductsFromCategoryAndQuery(id, query) {
 export async function getProductsByName(query) {
   return fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${query}`).then((res) => res.json()).then((data) => data);
 }
+
+export async function getProductsByCategory(id) {
+  return fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${id}`).then((res) => res.json()).then((data) => data);
+}

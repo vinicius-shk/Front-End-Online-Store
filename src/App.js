@@ -19,11 +19,17 @@ function App() {
               { ...props }
             />) }
           />
+
           <Route
             path="/carrinho"
-            render={ () => <Carrinho itens={ itens } /> }
+            render={ (props) => <Carrinho { ...props } itens={ itens } /> }
           />
-          <Route exact path="/" component={ Home } />
+          <Route
+            exact
+            path="/"
+            render={ (props) => (
+              <Home { ...props } setItem={ setItem } itens={ itens } />) }
+          />
         </Switch>
       </BrowserRouter>
     </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getProductsByCategory, getProductsByName } from '../services/api';
 import Categorias from '../components/Categorias';
 
@@ -25,15 +25,15 @@ class Home extends Component {
     this.getProducts();
   }
 
-  handleCartClick = (produto) => {
-    const { setItem, itens } = this.props;
-    setItem([...itens, produto]);
-  };
-
   handleRadioClick = async ({ target }) => {
     const { results } = await getProductsByCategory(target.id);
     this.setState({ produtos: results });
   }
+
+  handleCartClick = (produto) => {
+    const { setItem, itens } = this.props;
+    setItem([...itens, produto]);
+  };
 
   renderHomeMessage = () => (
     <div data-testid="home-initial-message">
@@ -43,27 +43,27 @@ class Home extends Component {
   renderProds = () => {
     const { produtos } = this.state;
     return produtos.map((produto) => (
-      <div
-        className=""
-        data-testid="product"
+      <Link
         key={ produto.id }
+        to={ `/produto/${produto.id}` }
+        data-testid="product-detail-link"
       >
-        <Link
-          to={ `/produto/${produto.id}` }
-          data-testid="product-detail-link"
+        <div
+          className=""
+          data-testid="product"
         >
           <h1>{produto.title}</h1>
           <h2>{produto.price}</h2>
           <img src={ produto.thumbnail } alt="" />
-        </Link>
-        <button
-          data-testid="product-add-to-cart"
-          type="button"
-          onClick={ () => this.handleCartClick(produto) }
-        >
-          Adicionar ao Carrinho
-        </button>
-      </div>
+          <button
+            data-testid="product-add-to-cart"
+            type="button"
+            onClick={ () => this.handleCartClick(produto) }
+          >
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </Link>
     ));
   }
 
@@ -101,9 +101,9 @@ class Home extends Component {
   }
 }
 
+export default Home;
+
 Home.propTypes = {
   setItem: PropTypes.func,
   itens: PropTypes.array,
 }.isRequired;
-
-export default Home;

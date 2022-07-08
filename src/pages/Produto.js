@@ -32,14 +32,34 @@ export default class Produto extends Component {
     );
   }
 
+  addOnItens = () => {
+    const { produto } = this.state;
+    const { setItem, itens } = this.props;
+    setItem([...itens, produto]);
+  }
+
   render() {
     const { produto } = this.state;
     return (
       <div>
         Produto
         {produto && this.renderProd()}
+        <button
+          type="button"
+          data-testid="product-detail-add-to-cart"
+          onClick={ this.addOnItens }
+        >
+          Adicionar Ao Carrinho
+
+        </button>
         <Link to="/carrinho">
-          <button type="button">Carrinho</button>
+          <button
+            data-testid="shopping-cart-button"
+            type="button"
+          >
+            Carrinho
+
+          </button>
         </Link>
       </div>
     );

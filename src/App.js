@@ -11,7 +11,15 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route path="/produto/:id" component={ Produto } />
+          <Route
+            path="/produto/:id"
+            render={ (props) => (<Produto
+              setItem={ setItem }
+              itens={ itens }
+              { ...props }
+            />) }
+          />
+
           <Route
             path="/carrinho"
             render={ (props) => <Carrinho { ...props } itens={ itens } /> }

@@ -2,40 +2,37 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Carrinho extends Component {
-  renderProds = () => {
-    const { itens } = this.props;
-    return itens.map((produto) => (
-      <div
-        className=""
-        key={ produto.id }
-      >
-        <h1 data-testid="shopping-cart-product-name">{produto.title}</h1>
-        <h2>{produto.price}</h2>
-        <p data-testid="shopping-cart-product-quantity">1</p>
-      </div>
-    ));
-  }
-
-  renderMessage = () => (
+  renderNullProduto = () => (
     <div
       data-testid="shopping-cart-empty-message"
     >
       Seu carrinho está vazio
-    </div>
-  )
+    </div>)
 
-  render() {
-    const { itens } = this.props;
-    return (
-      <div>
-        { !itens ? this.renderMessage() : this.renderProds() }
-      </div>
-    );
-  }
+    renderProds = () => {
+      const { itens } = this.props;
+      return itens.map((prod) => (
+        <div className="" key={ prod.id }>
+          <p data-testid="shopping-cart-product-name">{prod.title}</p>
+          <p>{prod.price}</p>
+          <p data-testid="shopping-cart-product-quantity">1</p>
+        </div>
+      ));
+    }
+
+    render() {
+      const { itens } = this.props;
+      return (
+        <div className="">
+          {itens.length === 0 && this.renderNullProduto()}
+          {itens.length > 0 && this.renderProds()}
+        </div>
+      );
+    }
 }
+
+export default Carrinho;
 
 Carrinho.propTypes = {
   itens: PropTypes.array,
 }.isRequired;
-
-export default Carrinho;

@@ -37,11 +37,20 @@ class Home extends Component {
   renderProds = () => {
     const { produtos } = this.state;
     return produtos.map((produto) => (
-      <div className="" data-testid="product" key={ produto.id }>
-        <h1>{produto.title}</h1>
-        <h2>{produto.price}</h2>
-        <img src={ produto.thumbnail } alt="" />
-      </div>
+      <Link
+        key={ produto.id }
+        to={ `/produto/${produto.id}` }
+        data-testid="product-detail-link"
+      >
+        <div
+          className=""
+          data-testid="product"
+        >
+          <h1>{produto.title}</h1>
+          <h2>{produto.price}</h2>
+          <img src={ produto.thumbnail } alt="" />
+        </div>
+      </Link>
     ));
   }
 

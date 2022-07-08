@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getProductsByCategory, getProductsByName } from '../services/api';
 import Categorias from '../components/Categorias';
 
@@ -29,6 +30,11 @@ class Home extends Component {
     this.setState({ produtos: results });
   }
 
+  handleCartClick = (produto) => {
+    const { setItem, itens } = this.props;
+    setItem([...itens, produto]);
+  };
+
   renderHomeMessage = () => (
     <div data-testid="home-initial-message">
       Digite algum termo de pesquisa ou escolha uma categoria.
@@ -49,6 +55,13 @@ class Home extends Component {
           <h1>{produto.title}</h1>
           <h2>{produto.price}</h2>
           <img src={ produto.thumbnail } alt="" />
+          <button
+            data-testid="product-add-to-cart"
+            type="button"
+            onClick={ () => this.handleCartClick(produto) }
+          >
+            Adicionar ao Carrinho
+          </button>
         </div>
       </Link>
     ));
@@ -89,3 +102,8 @@ class Home extends Component {
 }
 
 export default Home;
+
+Home.propTypes = {
+  setItem: PropTypes.func,
+  itens: PropTypes.array,
+}.isRequired;

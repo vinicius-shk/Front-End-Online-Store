@@ -43,27 +43,29 @@ class Home extends Component {
   renderProds = () => {
     const { produtos } = this.state;
     return produtos.map((produto) => (
-      <Link
-        key={ produto.id }
-        to={ `/produto/${produto.id}` }
-        data-testid="product-detail-link"
-      >
-        <div
-          className=""
-          data-testid="product"
+      <>
+        <Link
+          key={ produto.id }
+          to={ `/produto/${produto.id}` }
+          data-testid="product-detail-link"
         >
-          <h1>{produto.title}</h1>
-          <h2>{produto.price}</h2>
-          <img src={ produto.thumbnail } alt="" />
-          <button
-            data-testid="product-add-to-cart"
-            type="button"
-            onClick={ () => this.handleCartClick(produto) }
+          <div
+            className=""
+            data-testid="product"
           >
-            Adicionar ao Carrinho
-          </button>
-        </div>
-      </Link>
+            <h1>{produto.title}</h1>
+            <h2>{produto.price}</h2>
+            <img src={ produto.thumbnail } alt="" />
+          </div>
+        </Link>
+        <button
+          data-testid="product-add-to-cart"
+          type="button"
+          onClick={ () => this.handleCartClick(produto) }
+        >
+          Adicionar ao Carrinho
+        </button>
+      </>
     ));
   }
 

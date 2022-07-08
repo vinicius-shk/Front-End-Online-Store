@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getProductsByCategory, getProductsByName } from '../services/api';
 import Categorias from '../components/Categorias';
@@ -24,6 +25,11 @@ class Home extends Component {
     this.getProducts();
   }
 
+  handleCartClick = (produto) => {
+    const { setItem, itens } = this.props;
+    setItem([...itens, produto]);
+  };
+
   handleRadioClick = async ({ target }) => {
     const { results } = await getProductsByCategory(target.id);
     this.setState({ produtos: results });
@@ -37,20 +43,27 @@ class Home extends Component {
   renderProds = () => {
     const { produtos } = this.state;
     return produtos.map((produto) => (
-      <Link
+      <div
+        className=""
+        data-testid="product"
         key={ produto.id }
-        to={ `/produto/${produto.id}` }
-        data-testid="product-detail-link"
       >
-        <div
-          className=""
-          data-testid="product"
+        <Link
+          to={ `/produto/${produto.id}` }
+          data-testid="product-detail-link"
         >
           <h1>{produto.title}</h1>
           <h2>{produto.price}</h2>
           <img src={ produto.thumbnail } alt="" />
-        </div>
-      </Link>
+        </Link>
+        <button
+          data-testid="product-add-to-cart"
+          type="button"
+          onClick={ () => this.handleCartClick(produto) }
+        >
+          Adicionar ao Carrinho
+        </button>
+      </div>
     ));
   }
 
@@ -87,5 +100,10 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  setItem: PropTypes.func,
+  itens: PropTypes.array,
+}.isRequired;
 
 export default Home;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Categorias from '../components/Categorias';
@@ -29,6 +30,11 @@ class Home extends Component {
     this.setState({ produtos: results });
   }
 
+  handleCartClick = (produto) => {
+    const { setItem, itens } = this.props;
+    setItem([...itens, produto]);
+  };
+
   renderHomeMessage = () => (
     <div data-testid="home-initial-message">
       Digite algum termo de pesquisa ou escolha uma categoria.
@@ -37,11 +43,29 @@ class Home extends Component {
   renderProds = () => {
     const { produtos } = this.state;
     return produtos.map((produto) => (
-      <div className="" data-testid="product" key={ produto.id }>
-        <h1>{produto.title}</h1>
-        <h2>{produto.price}</h2>
-        <img src={ produto.thumbnail } alt="" />
-      </div>
+      <>
+        <Link
+          key={ produto.id }
+          to={ `/produto/${produto.id}` }
+          data-testid="product-detail-link"
+        >
+          <div
+            className=""
+            data-testid="product"
+          >
+            <h1>{produto.title}</h1>
+            <h2>{produto.price}</h2>
+            <img src={ produto.thumbnail } alt="" />
+          </div>
+        </Link>
+        <button
+          data-testid="product-add-to-cart"
+          type="button"
+          onClick={ () => this.handleCartClick(produto) }
+        >
+          Adicionar ao Carrinho
+        </button>
+      </>
     ));
   }
 
@@ -80,3 +104,8 @@ class Home extends Component {
 }
 
 export default Home;
+
+Home.propTypes = {
+  setItem: PropTypes.func,
+  itens: PropTypes.array,
+}.isRequired;

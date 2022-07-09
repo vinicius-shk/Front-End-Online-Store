@@ -1,8 +1,8 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { getProductsByCategory, getProductsByName } from '../services/api';
 import Categorias from '../components/Categorias';
+import { getProductsByCategory, getProductsByName } from '../services/api';
 
 class Home extends Component {
   constructor() {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getProductsByID } from '../services/api';
+import Evaluation from '../components/Evaluation';
 
 export default class Produto extends Component {
   constructor() {
@@ -61,6 +62,7 @@ export default class Produto extends Component {
 
           </button>
         </Link>
+        <Evaluation />
       </div>
     );
   }

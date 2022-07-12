@@ -4,6 +4,7 @@ import './App.css';
 import Carrinho from './pages/Carrinho';
 import Produto from './pages/Produto';
 import Home from './pages/Home';
+import Checkout from './pages/Checkout';
 
 function App() {
   const [itens, setItem] = useState(
@@ -32,6 +33,10 @@ function App() {
           <Route
             path="/carrinho"
             render={ (props) => <Carrinho { ...props } itens={ itens } /> }
+          />
+          <Route
+            path="/checkout"
+            render={ (props) => <Checkout { ...props } itens={ itens } /> }
           />
           <Route
             exact

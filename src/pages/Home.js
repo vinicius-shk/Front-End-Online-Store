@@ -50,6 +50,8 @@ class Home extends Component {
           <h2>{produto.price}</h2>
           <img src={ produto.thumbnail } alt="" />
         </div>
+        { produto.shipping.free_shipping
+        && <h1 data-testid="free-shipping">Frete grátis</h1> }
       </Link>
     ));
   }

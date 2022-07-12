@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Carrinho from './pages/Carrinho';
@@ -6,7 +6,15 @@ import Produto from './pages/Produto';
 import Home from './pages/Home';
 
 function App() {
-  const [itens, setItem] = useState([]);
+  const [itens, setItem] = useState(
+    JSON.parse(localStorage.getItem('itens')) === null
+      ? [] : JSON.parse(localStorage.getItem('itens')),
+  );
+
+  useEffect(() => {
+    localStorage.setItem('itens', JSON.stringify(itens));
+  }, [itens]);
+
   return (
     <div>
       <BrowserRouter>
@@ -17,6 +25,7 @@ function App() {
               setItem={ setItem }
               itens={ itens }
               { ...props }
+
             />) }
           />
 

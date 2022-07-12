@@ -73,6 +73,7 @@ class Home extends Component {
 
   render() {
     const { produtos, nomeProdPesquisa } = this.state;
+    const { itens } = this.props;
     return (
       <>
         <input
@@ -96,6 +97,10 @@ class Home extends Component {
         <Categorias onClick={ this.handleRadioClick } />
         <Link to="/carrinho" data-testid="shopping-cart-button">
           Carrinho de Compras
+          <p data-testid="shopping-cart-size">
+            Qntd de Itens:
+            {itens ? itens.length : 0 }
+          </p>
         </Link>
       </>
 

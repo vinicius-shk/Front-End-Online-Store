@@ -49,14 +49,16 @@ class Home extends Component {
           to={ `/produto/${produto.id}` }
           data-testid="product-detail-link"
         >
-          <div
-            className=""
-            data-testid="product"
-          >
-            <h1>{produto.title}</h1>
-            <h2>{produto.price}</h2>
-            <img src={ produto.thumbnail } alt="" />
-          </div>
+        <div
+          className=""
+          data-testid="product"
+        >
+          <h1>{produto.title}</h1>
+          <h2>{produto.price}</h2>
+          <img src={ produto.thumbnail } alt="" />
+        </div>
+        { produto.shipping.free_shipping
+        && <h1 data-testid="free-shipping">Frete grátis</h1> }
         </Link>
         <button
           data-testid="product-add-to-cart"

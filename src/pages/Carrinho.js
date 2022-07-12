@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Carrinho extends Component {
   constructor() {
@@ -93,6 +94,14 @@ renderNullProduto = () => (
         <div className="">
           {itens.length === 0 && this.renderNullProduto()}
           {itens.length > 0 && this.renderProds()}
+          <Link to="/checkout">
+            <button
+              data-testid="checkout-products"
+              type="button"
+            >
+              Finalizar compra
+            </button>
+          </Link>
         </div>
       );
     }

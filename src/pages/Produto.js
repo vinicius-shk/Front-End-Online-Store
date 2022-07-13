@@ -41,6 +41,7 @@ export default class Produto extends Component {
 
   render() {
     const { produto } = this.state;
+    const { itens } = this.props;
     return (
       <div>
         Produto
@@ -61,6 +62,10 @@ export default class Produto extends Component {
             Carrinho
 
           </button>
+          <p data-testid="shopping-cart-size">
+            Qntd de Itens:
+            {itens ? itens.length : 0 }
+          </p>
         </Link>
         <Evaluation />
       </div>

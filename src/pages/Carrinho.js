@@ -37,7 +37,6 @@ handleBtnClick = ({ target }) => {
 
 createStates = () => {
   const { itens } = this.props;
-  // const { quantidadeCarrinho } = this.state;
   const obj = {};
   itens.forEach(({ id }) => {
     obj[id] = 1;
@@ -81,6 +80,7 @@ renderNullProduto = () => (
             onClick={ this.handleBtnClick }
             name="+"
             id={ prod.id }
+            disabled={ prod.available_quantity <= quantidadeCarrinho[prod.id] }
           >
             +
           </button>

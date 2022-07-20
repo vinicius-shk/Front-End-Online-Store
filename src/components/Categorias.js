@@ -16,26 +16,41 @@ class Categorias extends React.Component {
 
   render() {
     const { listaCategorias } = this.state;
-    const { onClick } = this.props;
+    const { onClick, open } = this.props;
     return (
-      <nav>
+      <div
+        className={ ` ${open ? ' absolute  w-[100vw]'
+          : 'hidden'} 
+            md:absolute 
+            md:flex top-0 
+            mt-[110px] 
+            bg-verde 
+            md:border-r-2 
+            md:border-x-black 
+            md:border-b-2
+            md:border-y-black 
+            md:p-4` }
+      >
         <label
           htmlFor="categoria"
+          className="flex flex-col gap-5 items-center md:items-start text-white pt-5 pb-5"
         >
           {listaCategorias.map((item) => (
             <div key={ item.id }>
-              {item.name}
+
               <input
                 data-testid="category"
                 type="radio"
                 id={ item.id }
                 name="categoria"
                 onClick={ onClick }
+                className="mr-2"
               />
+              {item.name}
             </div>
           ))}
         </label>
-      </nav>
+      </div>
     );
   }
 }

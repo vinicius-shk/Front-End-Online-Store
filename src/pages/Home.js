@@ -89,7 +89,7 @@ class Home extends Component {
     ));
   }
 
-  renderNenhumEncotrado = () => <p>Nenhum produto foi encontrado</p>
+  renderNenhumEncotrado = () => <p>Nenhum produto foi encontrado.</p>
 
   renderLoading = () => (<div className="text-center p-4 md:ml-[250px]">
     <p>Carregando...</p>

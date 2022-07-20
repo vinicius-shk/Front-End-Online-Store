@@ -80,7 +80,7 @@ class Home extends Component {
         <button
           data-testid="product-add-to-cart"
           type="button"
-          className="button w-[150px] h-[50px] md:w-[100px] md:h-[50px]"
+          className="button w-[150px] h-[50px] md:w-[100px] text-xs md:h-[50px]"
           onClick={ () => this.handleCartClick(produto) }
         >
           Adicionar ao Carrinho

@@ -55,35 +55,49 @@ renderNullProduto = () => (
       const { itens } = this.props;
       const { quantidadeCarrinho } = this.state;
       return itens.map((prod) => (
-        <div className="" key={ prod.id }>
+        <div
+          className="w-[80%] md:w-[40%] h-[240px] flex flex-col items-center
+            p-4 bg-white"
+          key={ prod.id }
+        >
+          <img src={ prod.thumbnail } alt="" />
           <p data-testid="shopping-cart-product-name">{prod.title}</p>
-          <p>{prod.price}</p>
-          <button
-            type="button"
-            data-testid="product-decrease-quantity"
-            onClick={ this.handleBtnClick }
-            name="-"
-            id={ prod.id }
-          >
-            -
-          </button>
+          <p className="text-[#00a650]">
+            R$
+            {prod.price}
+          </p>
+          <div className="flex gap-5 pt-3">
+            <button
+              type="button"
+              data-testid="product-decrease-quantity"
+              onClick={ this.handleBtnClick }
+              name="-"
+              id={ prod.id }
+              className="bg-[#003be5] w-[20px]
+              h-[30px] text-white flex items-center justify-center rounded-lg"
+            >
+              -
+            </button>
 
-          <span
-            data-testid="shopping-cart-product-quantity"
-          >
-            {quantidadeCarrinho[prod.id]}
+            <span
+              data-testid="shopping-cart-product-quantity"
+            >
+              {quantidadeCarrinho[prod.id]}
 
-          </span>
-          <button
-            type="button"
-            data-testid="product-increase-quantity"
-            onClick={ this.handleBtnClick }
-            name="+"
-            id={ prod.id }
-            disabled={ prod.available_quantity <= quantidadeCarrinho[prod.id] }
-          >
-            +
-          </button>
+            </span>
+            <button
+              type="button"
+              data-testid="product-increase-quantity"
+              onClick={ this.handleBtnClick }
+              name="+"
+              id={ prod.id }
+              className="bg-[#003be5] w-[20px]
+              h-[30px] text-white flex items-center justify-center rounded-lg"
+              disabled={ prod.available_quantity <= quantidadeCarrinho[prod.id] }
+            >
+              +
+            </button>
+          </div>
         </div>
       ));
     }
@@ -91,18 +105,34 @@ renderNullProduto = () => (
     render() {
       const { itens } = this.props;
       return (
-        <div className="">
-          {itens.length === 0 && this.renderNullProduto()}
-          {itens.length > 0 && this.renderProds()}
-          <Link to="/checkout">
-            <button
-              data-testid="checkout-products"
-              type="button"
-            >
-              Finalizar compra
-            </button>
-          </Link>
-        </div>
+        <>
+          <header
+            className="bg-verde flex w-[100vw] h-[110px] px-3 items-center justify-between
+          md:px-8 md:w-auto"
+          >
+            <div className="w-[40px]">
+              <Link to="/">
+                <img src="/images/back-button.png" alt="" />
+              </Link>
+            </div>
+            <div className="w-[80px]">
+              <img src="/images/logo-negative-green.svg" alt="" />
+            </div>
+          </header>
+          <div className=" flex flex-col gap-[50px] pt-5 pb-5 items-center">
+            {itens.length === 0 && this.renderNullProduto()}
+            {itens.length > 0 && this.renderProds()}
+            <Link to="/checkout">
+              <button
+                data-testid="checkout-products"
+                type="button"
+                className="button w-[150px] h-[50px]"
+              >
+                Finalizar compra
+              </button>
+            </Link>
+          </div>
+        </>
       );
     }
 }

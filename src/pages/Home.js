@@ -102,7 +102,8 @@ class Home extends Component {
       <>
         <header
           className="bg-verde flex w-[100vw] h-[110px] px-3 items-center justify-between
-            md:px-8 md:w-auto"
+            md:px-8 md:w-auto md:border-b-2
+            md:border-y-black "
         >
           <div className="w-[80px]">
             <img src="/images/logo-negative-green.svg" alt="" />

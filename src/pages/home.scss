@@ -1,0 +1,123 @@
+$light: #efefef;
+$color: #b3e5fc;
+
+@mixin btn($right, $top) {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: $top;
+  right: $right;
+  transition-duration: 0.5s;
+}
+
+@mixin icon($height, $width) {
+  transition-duration: 0.5s;
+  position: absolute;
+  height: $height;
+  width: $width;
+  top: 30px;
+  background-color: $light;
+}
+
+@mixin icon-before($height, $width, $top) {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: $light;
+  content: "";
+  top: $top;
+}
+
+@mixin icon-after($height, $width, $top) {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: $light;
+  content: "";
+  top: $top;
+}
+
+
+.btn1{
+  @include btn(0px, 20px);
+  
+  .icon-left {
+    @include icon(4px, 15px);
+    left: 0px; 
+    
+    &:before{
+      @include icon-before(4px, 15px, -15px);
+    }
+    
+    &:after{
+      @include icon-after(4px, 15px, 15px);
+    }
+    
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  
+  .icon-right {
+    @include icon(4px, 15px);
+    left: 15px;
+    
+    &:before{
+      @include icon-before(4px, 15px, -15px);
+    }
+    
+    &:after{
+      @include icon-after(4px, 15px, 15px);
+    }
+  }
+  
+  &.open {
+    .icon-left {
+      transition-duration: 0.5s;
+      background: transparent;
+      
+      &:before{
+        transform: rotateZ(45deg) scaleX(1.4) translate(4px, 4px);
+      }
+
+      &:after{
+        transform: rotateZ(-45deg) scaleX(1.4) translate(4px, -4px);
+      }
+    }
+    
+    .icon-right {
+      transition-duration: 0.5s;
+      background: transparent;  
+      
+      &:before{
+        transform: rotateZ(-45deg) scaleX(1.4) translate(-4px, 4px);
+      }
+
+      &:after{
+        transform: rotateZ(45deg) scaleX(1.4) translate(-4px, -4px);
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.input{
+  height:45px;
+  background-color: rgb(240, 242, 245);
+  border-bottom:5px solid rgb(202 204 209);
+  padding-left:10px;
+  margin-bottom:15px;
+}
+textarea:focus, input:focus{
+  outline: none;
+}
+
+.button{
+  color:#ffff;
+  background-color:#003be5;
+  border-radius: 10px;
+}

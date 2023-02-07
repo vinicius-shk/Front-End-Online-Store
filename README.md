@@ -1,4 +1,4 @@
-# Solar System Space Missions
+# Front End Online Store
 
 This project is a online store that uses public API to fetch products data. The application is built with JavaScript and React, styled with SASS and Tailwind.
 

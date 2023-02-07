@@ -4,6 +4,11 @@ This project is a online store that uses public API to fetch products data. The 
 
 You can check a deployed version of this project [here](https://vinicius-shk-front-end-online-store.vercel.app)
 
+Big thanks to contributors:
+ * Caio Severino - [GitHub](https://github.com/Caiosev)
+ * David Machado - [GitHub](https://github.com/davidrmachado)
+ * Jean Rosa - [GitHub](https://github.com/Jean-Rosa19)
+
 ## Installation
 
 To install the project's dependencies, run the following command:

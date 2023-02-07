@@ -31,7 +31,3 @@ The application has a side bar that allows users to request products based on ca
 ## Contributing
 
 If you would like to contribute to this project, please submit a pull request with your proposed changes.
-
-## License
-
-This project is licensed under the MIT License.

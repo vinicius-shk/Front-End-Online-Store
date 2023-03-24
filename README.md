@@ -13,7 +13,9 @@ Big thanks to contributors:
 
 Clone the project
 
-> ```json git clone git@github.com:vinicius-shk/Front-End-Online-Store.git```
+```node
+git clone git@github.com:vinicius-shk/Front-End-Online-Store.git
+```
 
 To install the project's dependencies, run the following command:
 

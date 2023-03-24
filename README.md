@@ -17,6 +17,12 @@ Clone the project
 git clone git@github.com:vinicius-shk/Front-End-Online-Store.git
 ```
 
+Navigate to the cloned repository
+
+```
+cd Front-End_Online_Store
+```
+
 To install the project's dependencies, run the following command:
 
 ```

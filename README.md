@@ -13,20 +13,23 @@ Big thanks to contributors:
 
 Clone the project
 
-```git
+```
 git clone git@github.com:vinicius-shk/Front-End-Online-Store.git
 ```
 
 To install the project's dependencies, run the following command:
 
-> npm install
+```
+npm install
+```
 
 ## Running the Development Server
 
 To start the development server, run the following command:
 
-> npm start
-
+```
+npm start
+```
 
 This will start a development server on http://localhost:3000/. The application will automatically reload if you make changes to the code.
 

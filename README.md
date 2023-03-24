@@ -11,6 +11,10 @@ Big thanks to contributors:
 
 ## Installation
 
+Clone the project
+
+> git clone git@github.com:vinicius-shk/Front-End-Online-Store.git
+
 To install the project's dependencies, run the following command:
 
 > npm install

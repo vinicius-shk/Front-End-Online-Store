@@ -13,7 +13,7 @@ Big thanks to contributors:
 
 Clone the project
 
-```node
+```git
 git clone git@github.com:vinicius-shk/Front-End-Online-Store.git
 ```
 

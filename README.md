@@ -1,6 +1,6 @@
 # Front End Online Store
 
-This project is a online store that uses public API to fetch products data. The application is built with JavaScript and React, styled with SASS and Tailwind.
+This project is an online store that uses public API to fetch product data. The application is built with JavaScript and React, and styled with SASS and Tailwind.
 
 You can check a deployed version of this project [here](https://vinicius-shk-front-end-online-store.vercel.app)
 
